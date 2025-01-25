@@ -55,7 +55,6 @@ const login = async (email, password) => {
 const logout = async () => {
   try {
     await signOut(auth);
-    toast.success("Logged out successfully!");
   } catch (error) {
     console.error(error);
     toast.error(error.code);

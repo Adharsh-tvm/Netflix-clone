@@ -11,17 +11,18 @@ const App = () => {
 
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    onAuthStateChanged(auth, async (user)=>{
-      if(user){
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
         console.log("Logged In");
-        navigate('/')
-      }else{
+        if (window.location.pathname !== "/") navigate("/");
+      } else {
         console.log("Logged Out");
-        navigate('/login')
+        if (window.location.pathname !== "/login") navigate("/login");
       }
-    })
-  })
+    });
+  }, [navigate]);
+  
 
   return (
     <div>
